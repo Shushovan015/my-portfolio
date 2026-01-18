@@ -17,11 +17,9 @@ function GlassOrb({ scroll }: { scroll: number }) {
         const t = state.clock.getElapsedTime();
         if (!meshRef.current) return;
 
-        // idle motion
         meshRef.current.rotation.y = t * 0.35;
         meshRef.current.rotation.x = Math.sin(t * 0.4) * 0.15;
 
-        // scroll parallax (very subtle)
         meshRef.current.position.y = (scroll - 0.5) * -0.6;
     });
 

@@ -8,16 +8,17 @@ const nav = [
   { label: "Contact", id: "contact" },
 ];
 
-function scrollToId(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-}
-
+const scrollToId = (id: string) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+};
 export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/60 bg-zinc-950/70 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-14">
         <button onClick={() => scrollToId("home")} className="font-semibold tracking-tight">
-          YourName
+          SHUSHOVAN SHAKYA
         </button>
 
         <nav className="flex items-center gap-1 text-sm">

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/content/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://your-domain.com"; // replace after deploy
+  const base = "https://shushovan-shakya.vercel.app/"; 
 
   const routes = ["", "/projects", "/about", "/contact"].map((path) => ({
     url: `${base}${path}`,

@@ -22,7 +22,7 @@ const skills = [
 
 export default function Skills() {
     return (
-        <section className="py-20">
+        <section className="py-20 scroll-mt-24">
             <div className="grid gap-10 md:grid-cols-2 md:items-center">
                 <div>
                     <h2 className="text-2xl font-semibold tracking-tight">Skills constellation</h2>

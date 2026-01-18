@@ -5,12 +5,12 @@ import Footer from "@/components/ui/Footer";
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Name — Frontend Developer",
-    template: "%s — Your Name",
+    default: "Shushovan Shakya — Frontend Developer",
+    template: "%s — Shushovan Shakya",
   },
   description:
     "Creative frontend developer portfolio built with Next.js, Three.js, and performance-first UI engineering.",
-  metadataBase: new URL("https://your-domain.com"), // replace later when deployed
+  metadataBase: new URL("https://shushovan-shakya.vercel.app/"),
   openGraph: {
     title: "Your Name — Frontend Developer",
     description:
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Name — Frontend Developer",
+    title: "Shushovan Shakya — Frontend Developer",
     description:
       "Creative frontend developer portfolio built with Next.js, Three.js, and performance-first UI engineering.",
     images: ["/og.png"],
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className="min-h-screen bg-zinc-950 text-zinc-100 antialiased">
         <Navbar />
         <div className="mx-auto max-w-6xl px-6">{children}</div>

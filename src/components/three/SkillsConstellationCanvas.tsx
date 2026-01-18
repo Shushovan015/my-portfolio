@@ -25,14 +25,11 @@ function Constellation({
 
     const { viewport } = useThree();
 
-    // Mouse target for subtle parallax
     const pointer = useRef(new THREE.Vector2(0, 0));
 
-    // Nodes live in refs/memo so we don't recreate on re-render
     const nodes = useMemo<Node[]>(() => {
         const arr: Node[] = [];
         for (let i = 0; i < count; i++) {
-            // random point inside a sphere-ish volume
             const p = new THREE.Vector3(
                 (Math.random() * 2 - 1) * radius,
                 (Math.random() * 2 - 1) * radius,
@@ -50,10 +47,8 @@ function Constellation({
         return arr;
     }, [count, radius]);
 
-    // Geometry buffers for points
     const pointsPositions = useMemo(() => new Float32Array(count * 3), [count]);
 
-    // Geometry buffers for lines (we'll rebuild each frame but keep array)
     const maxSegments = useMemo(() => count * maxLinks, [count, maxLinks]);
     const linePositions = useMemo(() => new Float32Array(maxSegments * 2 * 3), [maxSegments]);
 
@@ -65,13 +60,11 @@ function Constellation({
         lineGeom.setAttribute("position", new THREE.BufferAttribute(linePositions, 3));
     }, [pointsGeom, lineGeom, pointsPositions, linePositions]);
 
-    // Update mouse position (normalized)
     useFrame(({ pointer: p }) => {
         pointer.current.set(p.x, p.y);
     });
 
     useFrame(() => {
-        // Update node positions
         const parallaxX = pointer.current.x * 0.15;
         const parallaxY = pointer.current.y * 0.15;
 
@@ -81,25 +74,20 @@ function Constellation({
             if (!reducedMotion) {
                 n.position.add(n.velocity);
 
-                // Soft bounds
                 if (Math.abs(n.position.x) > radius) n.velocity.x *= -1;
                 if (Math.abs(n.position.y) > radius) n.velocity.y *= -1;
                 if (Math.abs(n.position.z) > 0.8) n.velocity.z *= -1;
             }
 
-            // Write points positions (+ subtle parallax)
             pointsPositions[i * 3 + 0] = n.position.x + parallaxX;
             pointsPositions[i * 3 + 1] = n.position.y + parallaxY;
             pointsPositions[i * 3 + 2] = n.position.z;
         }
 
-        // Build connections (nearest neighbors)
-        // Keep it cheap: for each node, find 2 nearest nodes (O(n^2) but count is small)
         let seg = 0;
         const threshold = 0.55;
 
         for (let i = 0; i < nodes.length; i++) {
-            // find nearest neighbors
             let bestA = -1;
             let bestB = -1;
             let distA = Infinity;
@@ -131,7 +119,6 @@ function Constellation({
                 const d = pi.distanceTo(pj);
                 if (d > threshold) continue;
 
-                // Write two points for the segment
                 linePositions[seg * 6 + 0] = pi.x + parallaxX;
                 linePositions[seg * 6 + 1] = pi.y + parallaxY;
                 linePositions[seg * 6 + 2] = pi.z;
@@ -144,7 +131,6 @@ function Constellation({
             }
         }
 
-        // Zero out remaining segments so old lines don't remain
         for (let k = seg; k < maxSegments; k++) {
             linePositions[k * 6 + 0] = 0;
             linePositions[k * 6 + 1] = 0;
@@ -154,7 +140,6 @@ function Constellation({
             linePositions[k * 6 + 5] = 0;
         }
 
-        // Mark buffers updated
         (pointsGeom.attributes.position as THREE.BufferAttribute).needsUpdate = true;
         (lineGeom.attributes.position as THREE.BufferAttribute).needsUpdate = true;
     });

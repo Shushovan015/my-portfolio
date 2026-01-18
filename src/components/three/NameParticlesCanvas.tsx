@@ -11,7 +11,6 @@ type ParticlesProps = {
 };
 
 function sampleTextPoints(text: string, subtext?: string) {
-    // Offscreen canvas to rasterize text into pixels, then sample points
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     if (!ctx) return [];
@@ -25,12 +24,10 @@ function sampleTextPoints(text: string, subtext?: string) {
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, W, H);
 
-    // Main text
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // Use system font (no external assets)
     ctx.font = "700 110px system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial";
     ctx.fillText(text, W / 2, H / 2 - (subtext ? 30 : 0));
 
@@ -44,16 +41,15 @@ function sampleTextPoints(text: string, subtext?: string) {
     const img = ctx.getImageData(0, 0, W, H).data;
 
     const points: Array<[number, number]> = [];
-    const step = 5; // smaller = more points; keep it lightweight
+    const step = 5; 
     for (let y = 0; y < H; y += step) {
         for (let x = 0; x < W; x += step) {
             const i = (y * W + x) * 4;
-            const r = img[i]; // white text
+            const r = img[i]; 
             if (r > 200) points.push([x, y]);
         }
     }
 
-    // Normalize points to centered coordinates in [-1..1] space
     const centered = points.map(([x, y]) => {
         const nx = (x / W) * 2 - 1;
         const ny = -((y / H) * 2 - 1);
@@ -70,28 +66,22 @@ function NameParticles({ text, subtext }: ParticlesProps) {
     const groupRef = useRef<THREE.Group>(null);
     const geomRef = useRef<THREE.BufferGeometry>(null);
 
-    // Generate target points once (client-side)
     const targetPoints = useMemo(() => {
-        // This runs on client (component is in a client-only Canvas)
         return sampleTextPoints(text, subtext);
     }, [text, subtext]);
 
-    // Cap particle count for performance
     const count = Math.min(targetPoints.length, 1800);
 
-    // Initial/random positions + velocities
     const { positions, targets, velocities } = useMemo(() => {
         const pos = new Float32Array(count * 3);
         const tgt = new Float32Array(count * 3);
         const vel = new Float32Array(count * 3);
 
         for (let i = 0; i < count; i++) {
-            // scattered start
             pos[i * 3 + 0] = (Math.random() * 2 - 1) * 2.2;
             pos[i * 3 + 1] = (Math.random() * 2 - 1) * 1.2;
             pos[i * 3 + 2] = (Math.random() * 2 - 1) * 0.6;
 
-            // target points sampled from text
             const p = targetPoints[i] ?? new THREE.Vector3(0, 0, 0);
             tgt[i * 3 + 0] = p.x;
             tgt[i * 3 + 1] = p.y;
@@ -112,12 +102,10 @@ function NameParticles({ text, subtext }: ParticlesProps) {
 
         if (!groupRef.current || !geomRef.current) return;
 
-        // Subtle parallax
         groupRef.current.rotation.y = pointer.current.x * 0.18;
         groupRef.current.rotation.x = -pointer.current.y * 0.12;
 
         if (reducedMotion) {
-            // If reduced motion, snap particles closer without “swarm”
             const snap = 0.08;
             for (let i = 0; i < count; i++) {
                 const ix = i * 3;
@@ -126,7 +114,6 @@ function NameParticles({ text, subtext }: ParticlesProps) {
                 positions[ix + 2] = THREE.MathUtils.lerp(positions[ix + 2], targets[ix + 2], snap);
             }
         } else {
-            // “Code resolves into identity” motion: damped spring-ish attraction
             const t = clock.getElapsedTime();
             const attract = 0.018;
             const damping = 0.88;
@@ -138,7 +125,6 @@ function NameParticles({ text, subtext }: ParticlesProps) {
                 const dy = targets[ix + 1] - positions[ix + 1];
                 const dz = targets[ix + 2] - positions[ix + 2];
 
-                // small wave for life (not spacey)
                 const wobble = Math.sin(t * 1.5 + i * 0.02) * 0.0008;
 
                 velocities[ix + 0] = (velocities[ix + 0] + dx * attract) * damping;
@@ -155,7 +141,6 @@ function NameParticles({ text, subtext }: ParticlesProps) {
         attr.needsUpdate = true;
     });
 
-    // Scale to fit nicely
     const scale = Math.min(viewport.width, 12) / 6.5;
 
     return (

@@ -8,7 +8,7 @@ export type Project = {
     links: {
         live?: string;
         github?: string;
-        caseStudy?: string; // we'll use internal pages later
+        caseStudy?: string;
     };
     caseStudy?: {
         problem: string;
@@ -19,101 +19,147 @@ export type Project = {
         src: string;
         alt: string;
     };
-    highlights?: string[]; // quick bullet wins
+    highlights?: string[];
 };
 
 export const projects: Project[] = [
     {
-        slug: "nebula-ui",
-        title: "Nebula UI",
-        summary: "A component-driven design system with motion, theming, and accessibility built-in.",
+        slug: "foam3d",
+        title: "FOAM3D",
+        summary:
+            "A 3D visualization and image processing tool for creating customizable shapes and extracting outlines from images.",
+        year: 2023,
+        role: "Full Stack",
+        tags: ["Three.js", "WebGL", "Python", "Docker", "Image Processing"],
+        links: {
+            github: "https://github.com/example",
+        },
+        highlights: [
+            "Custom 3D shape creation",
+            "Outline extraction from images",
+            "Dockerized deployment",
+        ],
+        cover: {
+            src: "/projects/foam3d/cover.jpg",
+            alt: "FOAM3D preview",
+        },
+        caseStudy: {
+            problem:
+                "Users needed a way to generate and visualize complex 3D shapes while extracting usable geometry from uploaded images.",
+            approach: [
+                "Built a Three.js frontend for interactive shape creation and visualization.",
+                "Integrated a Python backend for image processing and outline extraction.",
+                "Dockerized the platform to ensure scalable and consistent deployments.",
+            ],
+            outcome: [
+                "Enabled fast creation and visualization of complex 3D forms.",
+                "Streamlined the pipeline from image upload to 3D geometry.",
+                "Improved deployment reliability and scalability.",
+            ],
+        },
+    },
+    {
+        slug: "urban-tourist-visualization",
+        title: "Real-Time Visualization of Urban Data for Tourists",
+        summary:
+            "A real-time crowd visualization and guidance system for urban tourism, combining simulated live mobility data, historical records, and popularity signals to present intuitive crowd badges, trends, and recommendations.",
         year: 2025,
-        role: "Frontend",
-        tags: ["Next.js", "TypeScript", "Tailwind", "Framer Motion"],
-        links: {
-            live: "https://example.com",
-            github: "https://github.com/example",
-        },
-        highlights: ["Accessible components", "Token-based theming", "Motion presets"],
+        role: "Master’s Thesis",
+        tags: [
+            "Urban Informatics",
+            "Crowd Analytics",
+            "Visualization",
+            "OpenLayers",
+            "React",
+            "D3.js",
+            "Node.js",
+            "Redis",
+            "MongoDB",
+            "Geospatial",
+        ],
+        links: {},
+        highlights: [
+            "Tourist-focused crowd badges (Chill, Lively, Overcrowded) with adaptive thresholds",
+            "Now & Next recommendations to spread visitors across alternatives",
+            "Interactive heatmaps, KDE layers, and 7-day hourly charts",
+            "Synthetic crowd data pipeline to simulate live conditions",
+        ],
         cover: {
-            src: "/projects/nebula-ui/cover.jpg",
-            alt: "Nebula UI preview",
+            src: "/projects/urban-tourist-visualization/cover.jpg",
+            alt: "Real-time urban crowd visualization interface",
         },
         caseStudy: {
             problem:
-                "Teams were shipping inconsistent UI and spending too long rebuilding common patterns. The goal was to create a reusable, accessible system with motion and theming.",
+                "Urban tourism causes overcrowding in historic centers, reducing visitor experience and livability. Tourists need real-time, easy-to-read guidance rather than raw crowd metrics.",
             approach: [
-                "Built a token-based theming system for colors, spacing, radius, and shadows.",
-                "Created accessible primitives (focus, keyboard nav, ARIA) as defaults.",
-                "Added motion presets for consistent interactions and transitions.",
+                "Combined simulated live data, historical records, and popularity signals into a unified pipeline.",
+                "Computed capacity, pressure, adaptive thresholds, and flow trends to derive intuitive badges.",
+                "Built a React + OpenLayers web UI with heatmaps, KDE layers, charts, and recommendations.",
+                "Validated usability through interviews with professional tourist guides.",
             ],
             outcome: [
-                "Reduced UI build time by standardizing components and patterns.",
-                "Improved consistency across pages and features.",
-                "Established a scalable foundation for new components.",
+                "Produced a tourist-friendly visualization system that improves situational awareness.",
+                "Showed that enriched indicators and simple badges are easier to interpret than raw data.",
+                "Demonstrated recommendations can help distribute visitors more evenly.",
             ],
         },
     },
-    {
-        slug: "orbit-commerce",
-        title: "Orbit Commerce",
-        summary: "High-performance e-commerce frontend with instant navigation and polished UI details.",
-        year: 2024,
-        role: "Frontend",
-        tags: ["Next.js", "RSC", "Performance", "SEO"],
-        links: {
-            live: "https://example.com",
-        },
-        highlights: ["Lighthouse 95+", "Optimized images", "Fast product filtering"],
-        cover: {
-            src: "/projects/orbit-commerce/cover.jpg",
-            alt: "Orbit Commerce preview",
-        },
-        caseStudy: {
-            problem:
-                "The storefront needed faster navigation, better SEO, and a smoother browsing experience for users on mid-range devices.",
-            approach: [
-                "Improved route-level performance by reducing unnecessary client JS.",
-                "Optimized images and critical rendering paths for faster LCP.",
-                "Built responsive filters and UI states with clear loading feedback.",
-            ],
-            outcome: [
-                "Better perceived performance and smoother browsing experience.",
-                "Improved SEO foundations via clean metadata and structure.",
-                "More maintainable UI patterns for product pages and lists.",
-            ],
-        },
 
-    },
     {
-        slug: "three-landing",
-        title: "Three.js Landing Experience",
-        summary: "A WebGL hero section that stays smooth on mid-range devices using smart render controls.",
-        year: 2024,
-        role: "Creative Dev",
-        tags: ["Three.js", "R3F", "Drei", "UX"],
+        slug: "changunarayan-open-data",
+        title: "Changunarayan Open Data Portal",
+        summary:
+            "A municipal geospatial web app for harvesting and visualizing public sector data across Changunarayan Municipality.",
+        year: 2022,
+        role: "Frontend",
+        tags: ["React", "Redux", "D3", "OpenLayers", "Geospatial"],
         links: {
-            github: "https://github.com/example",
+            live: "https://changu-stag.naxa.com.np",
         },
-        highlights: ["Reduced-motion support", "Lazy loaded canvas", "DPR tuning"],
+        highlights: [
+            "Municipal-level open data portal",
+            "Geospatial visualization",
+            "Metadata harvesting from public data sources",
+        ],
         cover: {
-            src: "/projects/three-landing/cover.jpg",
-            alt: "Three.js landing experience preview",
+            src: "/projects/changunarayan-open-data/cover.jpg",
+            alt: "Changunarayan Open Data Portal preview",
         },
         caseStudy: {
             problem:
-                "A WebGL hero can easily tank performance or feel gimmicky. The challenge was creating a premium 3D moment that stays smooth and accessible.",
+                "The municipality needed a centralized platform to collect, manage, and visualize public sector data for transparency and planning.",
             approach: [
-                "Used a lightweight scene with tuned DPR and minimal geometry cost.",
-                "Implemented reduced-motion support and subtle interactions.",
-                "Designed lighting/environment for a premium look without heavy assets.",
+                "Designed and developed a React-based frontend with OpenLayers for map visualization.",
+                "Integrated Redux for state management and D3 for data-driven visuals.",
+                "Built pipelines to harvest and normalize metadata from public data portals.",
             ],
             outcome: [
-                "A signature hero that feels premium without overwhelming the UI.",
-                "Improved accessibility with motion preferences respected.",
-                "Kept rendering smooth on mid-range devices.",
+                "Delivered a functional municipal open data portal.",
+                "Improved access to public sector information for citizens and planners.",
+                "Enabled geospatial insights through interactive maps and charts.",
             ],
         },
-
     },
+
+    {
+        slug: "webscrapping",
+        title: "WebScrapping",
+        summary:
+            "A web scraping project that collects and processes data from target sites for structured use.",
+        year: 2024,
+        role: "Developer",
+        tags: ["Web Scraping", "Automation", "Data Collection"],
+        links: {
+            github: "https://github.com/Shushovan015/WebScrapping",
+        },
+        highlights: [
+            "Automated data extraction pipeline",
+            "Structured output for reuse/analysis",
+        ],
+        cover: {
+            src: "/projects/webscrapping/cover.jpg",
+            alt: "WebScrapping project preview",
+        },
+    },
+
 ];

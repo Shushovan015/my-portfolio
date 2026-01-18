@@ -9,7 +9,7 @@ function buildPointsFromImage(imgData: ImageData, maxPoints: number) {
     const { data, width: W, height: H } = imgData;
 
     const samples: Array<{ x: number; y: number; r: number; g: number; b: number; a: number }> = [];
-    const step = 2; // detail level
+    const step = 2;
 
     for (let y = 0; y < H; y += step) {
         for (let x = 0; x < W; x += step) {
@@ -21,17 +21,14 @@ function buildPointsFromImage(imgData: ImageData, maxPoints: number) {
 
             if (a < 60) continue;
 
-            // brightness
             const br = (r + g + b) / 3;
 
-            // drop near-white pixels (background)
             if (br > 245) continue;
 
             samples.push({ x, y, r, g, b, a });
         }
     }
 
-    // Shuffle for a more even spatial distribution
     for (let i = samples.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [samples[i], samples[j]] = [samples[j], samples[i]];
@@ -78,12 +75,10 @@ function PortraitParticles({
         null
     );
 
-    // We animate these (start scattered -> move to target)
     const positionsRef = useRef<Float32Array | null>(null);
     const velocitiesRef = useRef<Float32Array | null>(null);
     const initializedRef = useRef(false);
 
-    // load image -> build target positions + colors
     useEffect(() => {
         let cancelled = false;
 
@@ -98,11 +93,10 @@ function PortraitParticles({
             const ctx = canvas.getContext("2d");
             if (!ctx) return;
 
-            const size = 320; // sampling resolution (higher = more detail, heavier)
+            const size = 320; 
             canvas.width = size;
             canvas.height = size;
 
-            // cover-crop to square (keeps face centered)
             const aspect = img.width / img.height;
             let sx = 0,
                 sy = 0,
@@ -119,7 +113,6 @@ function PortraitParticles({
 
             ctx.clearRect(0, 0, size, size);
 
-            // Boost contrast & reduce background influence
             ctx.imageSmoothingEnabled = true;
             ctx.imageSmoothingQuality = "high";
             ctx.filter = "contrast(1.25) saturate(1.05)";
@@ -131,7 +124,6 @@ function PortraitParticles({
             const imgData = ctx.getImageData(0, 0, size, size);
             const built = buildPointsFromImage(imgData, maxPoints);
 
-            // reset init so geometry rebuilds for new targets
             initializedRef.current = false;
             positionsRef.current = null;
             velocitiesRef.current = null;
@@ -149,20 +141,17 @@ function PortraitParticles({
     useFrame(({ pointer, clock }) => {
         if (!geomRef.current || !targets) return;
 
-        // subtle tilt
         if (groupRef.current) {
             groupRef.current.rotation.y = pointer.x * 0.18;
             groupRef.current.rotation.x = -pointer.y * 0.12;
         }
 
-        // init geometry once targets exist
         if (!initializedRef.current) {
             const count = targets.positions.length / 3;
 
             positionsRef.current = new Float32Array(count * 3);
             velocitiesRef.current = new Float32Array(count * 3);
 
-            // scattered start positions
             for (let i = 0; i < count; i++) {
                 positionsRef.current[i * 3 + 0] = (Math.random() * 2 - 1) * 2.2;
                 positionsRef.current[i * 3 + 1] = (Math.random() * 2 - 1) * 1.4;
@@ -201,10 +190,8 @@ function PortraitParticles({
             const dy = targetPos[ix + 1] - positions[ix + 1];
             const dz = targetPos[ix + 2] - positions[ix + 2];
 
-            // tiny life after assembled
             const breathe = Math.sin(clock.getElapsedTime() * 1.1 + i * 0.02) * 0.0002 * assemble;
 
-            // chaotic start, settles down
             const chaos = (1 - assemble) * 0.002;
 
             velocities[ix + 0] = (velocities[ix + 0] + dx * attract + (Math.random() - 0.5) * chaos) * damping;
@@ -220,7 +207,6 @@ function PortraitParticles({
         attr.needsUpdate = true;
     });
 
-    // Make it fill the card
     const scale = Math.min(viewport.width, viewport.height) / 1.45;
 
     return (
