@@ -67,30 +67,30 @@ export default function AboutSection() {
 
                     <aside className="rounded-3xl border border-zinc-800/60 bg-zinc-900/20 p-6">
                         <p className="text-xs font-semibold uppercase tracking-widest text-zinc-400">
-                            Snapshot
+                            Profile Overview
                         </p>
 
                         <div className="mt-4 space-y-4 text-sm">
                             <div className="rounded-2xl border border-zinc-800/60 bg-zinc-950/30 p-4">
                                 <p className="text-zinc-400">Focus</p>
-                                <p className="mt-1 text-zinc-200">UI engineering • performance • motion</p>
+                                <p className="mt-1 text-zinc-200">Frontend Development • Data Visualization • Interaction Design</p>
                             </div>
 
                             <div className="rounded-2xl border border-zinc-800/60 bg-zinc-950/30 p-4">
                                 <p className="text-zinc-400">Primary stack</p>
-                                <p className="mt-1 text-zinc-200">React • Next.js • TypeScript • Tailwind</p>
+                                <p className="mt-1 text-zinc-200">React • Next.js • TypeScript • Javascript</p>
                             </div>
 
                             <div className="rounded-2xl border border-zinc-800/60 bg-zinc-950/30 p-4">
                                 <p className="text-zinc-400">Currently</p>
-                                <p className="mt-1 text-zinc-200">M.Sc. Software Systems (Germany)</p>
+                                <p className="mt-1 text-zinc-200">M.Sc. International Software System Science (Germany)</p>
                             </div>
                         </div>
                     </aside>
                 </header>
 
 
-                <section className="mt-14">
+                {/* <section className="mt-14">
                     <h2 className="text-xl font-semibold">How I work</h2>
                     <div className="mt-6 grid gap-6 lg:grid-cols-3">
                         {values.map((v) => (
@@ -103,9 +103,9 @@ export default function AboutSection() {
                             </div>
                         ))}
                     </div>
-                </section>
+                </section> */}
 
-                <section className="mt-14">
+                {/* <section className="mt-14">
                     <h2 className="text-xl font-semibold">Timeline</h2>
                     <div className="mt-6 space-y-4">
                         {timeline.map((t) => (
@@ -119,7 +119,7 @@ export default function AboutSection() {
                             </div>
                         ))}
                     </div>
-                </section>
+                </section> */}
 
                 <section className="mt-16 overflow-hidden rounded-3xl border border-zinc-800/60 bg-zinc-900/20 p-6">
                     <div className="pointer-events-none absolute -inset-24 bg-[radial-gradient(circle_at_center,rgba(120,120,255,0.10),transparent_60%)]" />
