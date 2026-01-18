@@ -4,7 +4,7 @@ const nav = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
   { label: "Projects", id: "projects" },
-  { label: "Tools", id: "tools" },
+  { label: "Skills", id: "skills" },
   { label: "Contact", id: "contact" },
 ];
 
