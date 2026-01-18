@@ -24,3 +24,13 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+html,
+body {
+  overflow-x: hidden;
+}
+
+[data-nextjs-devtools],
+[data-nextjs-toast],
+#__next-build-watcher {
+  display: none !important;
+}
