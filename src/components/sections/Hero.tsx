@@ -137,7 +137,6 @@ export default function Hero() {
                             className="absolute inset-0 h-full w-full object-cover object-center"
                         />
 
-                        {/* JPG overlay clipped by drag */}
                         <img
                             src="/me.jpg"
                             alt="Photo portrait"
@@ -147,13 +146,11 @@ export default function Hero() {
                             }}
                         />
 
-                        {/* Divider line */}
                         <div
                             className="absolute top-0 h-full w-[2px] bg-gradient-to-b from-white/10 via-white/90 to-white/10 shadow-[0_0_12px_rgba(255,255,255,0.25)]"
                             style={{ left: `${split}%` }}
                         />
 
-                        {/* Drag handle */}
                         <button
                             type="button"
                             className="absolute top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-zinc-950/80 p-2 shadow-lg backdrop-blur"

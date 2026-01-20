@@ -138,11 +138,12 @@ export default function ProjectCard({ project }: { project: Project }) {
                                 <img
                                     src={project.cover.src}
                                     alt={project.cover.alt}
-                                    className="h-56 w-full object-cover"
+                                    className="w-full object-contain"
                                     loading="lazy"
                                 />
                             </div>
                         ) : null}
+
 
                         {project.caseStudy ? (
                             <div className="mt-6 space-y-5 text-sm text-zinc-300">
