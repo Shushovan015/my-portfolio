@@ -129,7 +129,7 @@ export default function AboutSection() {
                     </p>
                     <div className="mt-6">
                         <a
-                            href="/contact"
+                            href="#contact"
                             className="inline-flex rounded-2xl bg-zinc-100 px-5 py-3 text-sm font-medium text-zinc-950 hover:bg-white"
                         >
                             Contact me

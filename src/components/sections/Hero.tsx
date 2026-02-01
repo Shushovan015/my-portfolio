@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
+import ParticleMorphHero from "../three/ParticleMorphHero";
 
 export default function Hero() {
     const containerRef = useRef<HTMLDivElement | null>(null);
@@ -124,64 +125,8 @@ export default function Hero() {
                     </div>
                 </div>
 
-                <div className="relative h-[360px] w-full overflow-hidden rounded-3xl border border-zinc-800/60 bg-zinc-900/20 md:h-[520px]">
-                    <div
-                        ref={containerRef}
-                        className="relative h-full w-full select-none touch-none"
-                        onPointerDown={handlePointerDown}
-                    >
-                        {/* Base SVG */}
-                        <img
-                            src="/me.svg"
-                            alt="Vector portrait"
-                            className="absolute inset-0 h-full w-full object-cover object-center"
-                        />
-
-                        <img
-                            src="/me.jpg"
-                            alt="Photo portrait"
-                            className="absolute inset-0 h-full w-full object-cover object-center"
-                            style={{
-                                clipPath: `inset(0 ${100 - split}% 0 0)`,
-                            }}
-                        />
-
-                        <div
-                            className="absolute top-0 h-full w-[2px] bg-gradient-to-b from-white/10 via-white/90 to-white/10 shadow-[0_0_12px_rgba(255,255,255,0.25)]"
-                            style={{ left: `${split}%` }}
-                        />
-
-                        <button
-                            type="button"
-                            className="absolute top-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-zinc-950/80 p-2 shadow-lg backdrop-blur"
-                            style={{ left: `calc(${split}% - 18px)` }}
-                            aria-label="Drag to compare"
-                        >
-                            <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M8 7L4 12L8 17"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                                <path
-                                    d="M16 7L20 12L16 17"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </svg>
-                        </button>
-                    </div>
+                <div className="w-full">
+                    <ParticleMorphHero className="h-[360px] md:h-[520px]" />
                 </div>
             </div>
         </section>
