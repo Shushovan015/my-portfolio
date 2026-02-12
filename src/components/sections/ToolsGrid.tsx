@@ -19,6 +19,7 @@ import {
     SiGithub,
     SiDocker,
     SiEslint,
+    SiPython
 } from "react-icons/si";
 
 import { TbApi } from "react-icons/tb";
@@ -48,6 +49,7 @@ const iconByName = {
     WebGL: SiThreedotjs,
     OpenLayers: TbApi,
 
+    "Python" : SiPython,
     "Node.js": SiNodedotjs,
     "REST APIs": TbApi,
 
@@ -85,12 +87,12 @@ const categories: { title: string; items: SkillKey[] }[] = [
         title: "Data Visualization",
         items: ["D3.js", "Three.js", "WebGL", "OpenLayers"],
     },
-    { title: "Backend & Integration", items: ["Node.js", "REST APIs"] },
+    { title: "Backend & Integration", items: ["Node.js", "REST APIs", "Python"] },
     {
         title: "Tooling",
         items: ["Git", "GitLab CI", "Docker", "CI/CD", "ES-Lint", "GitHub"],
     },
-    { title: "Methods", items: ["Agile Development", "Scrum", "Kanban"] },
+    { title: "Methods", items: ["Agile Development", "Scrum"] },
 ];
 
 function SkillCard({ name, Icon }: { name: string; Icon: IconType }) {
