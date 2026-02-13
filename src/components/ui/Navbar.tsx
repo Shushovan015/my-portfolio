@@ -13,25 +13,42 @@ const scrollToId = (id: string) => {
   if (!el) return;
   el.scrollIntoView({ behavior: "smooth", block: "start" });
 };
-export default function Navbar() {
+
+type NavbarProps = {
+  onSwitchToChat?: () => void;
+};
+
+export default function Navbar({ onSwitchToChat }: NavbarProps) {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/60 bg-zinc-950/70 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 h-14">
+      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
         <button onClick={() => scrollToId("home")} className="font-semibold tracking-tight">
           SHUSHOVAN SHAKYA
         </button>
 
-        <nav className="flex items-center gap-1 text-sm">
-          {nav.map((item) => (
+        <div className="flex items-center gap-2">
+          <nav className="flex items-center gap-1 text-sm">
+            {nav.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollToId(item.id)}
+                className="rounded-2xl px-4 py-2 text-zinc-300 transition-colors hover:bg-zinc-900/40 hover:text-white"
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          {onSwitchToChat ? (
             <button
-              key={item.id}
-              onClick={() => scrollToId(item.id)}
-              className="rounded-2xl px-4 py-2 text-zinc-300 hover:text-white hover:bg-zinc-900/40 transition-colors"
+              type="button"
+              onClick={onSwitchToChat}
+              className="rounded-xl border border-zinc-700 px-3 py-2 text-xs text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-900/50"
             >
-              {item.label}
+              Conversation View
             </button>
-          ))}
-        </nav>
+          ) : null}
+        </div>
       </div>
     </header>
   );
