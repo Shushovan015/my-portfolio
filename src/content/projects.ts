@@ -32,7 +32,7 @@ export const projects: Project[] = [
         role: "Full Stack",
         tags: ["Three.js", "WebGL", "Python", "Docker", "Image Processing"],
         links: {
-            github: "https://github.com/Shushovan015/Real-time-visualization-of-urban-mobility-data",
+            live: "https://fm24api.com/",
         },
         highlights: [
             "Allows users to create and customize 3D shapes in real-time.",
@@ -86,7 +86,9 @@ export const projects: Project[] = [
             "MongoDB",
             "Geospatial",
         ],
-        links: {},
+        links: {
+            github: "https://github.com/Shushovan015/Real-time-visualization-of-urban-mobility-data",
+        },
         highlights: [
             "Provides real-time crowd information using intuitive tourist-friendly badges (Chill, Lively, Overcrowded).",
             "Recommends alternative attractions to reduce congestion and improve visitor experience.",
@@ -162,7 +164,53 @@ export const projects: Project[] = [
             ],
         },
     },
-
+    {
+        slug: "blue-green-infrastructure",
+        title: "Blue-Green Infrastructure Mapping Platform",
+        summary:
+            "An interactive geospatial web platform for mapping and visualizing blue and green infrastructure elements to support sustainable urban planning in Kathmandu.",
+        year: 2024,
+        role: "Frontend / GIS Developer",
+        tags: [
+            "React",
+            "OpenLayers",
+            "Geospatial",
+            "Urban Planning",
+            "GIS",
+            "Data Visualization"
+        ],
+        links: {
+            live: "https://bluegreeninfra.naxa.com.np/",
+        },
+        highlights: [
+            "Developed an interactive geospatial platform to visualize blue (water bodies) and green (parks, vegetation, ecological corridors) infrastructure.",
+            "Built dynamic map layers with filtering and exploration capabilities for planners and stakeholders.",
+            "Integrated spatial datasets into a user-friendly interface for improved accessibility and decision-making.",
+            "Optimized performance for handling large geospatial datasets in the browser.",
+            "Designed a clean and intuitive UI tailored for urban planning and sustainability use cases."
+        ],
+        cover: {
+            src: "/projects/blue-green-infrastructure/cover.png",
+            alt: "Blue-Green Infrastructure Mapping Platform preview",
+        },
+        caseStudy: {
+            problem:
+                "Urban planners and stakeholders lacked an accessible, interactive platform to explore blue and green infrastructure data. Existing datasets were fragmented and not easily interpretable for decision-making or public engagement.",
+            approach: [
+                "Designed and implemented a responsive web-based GIS interface using modern frontend technologies.",
+                "Integrated multiple geospatial datasets representing water bodies, green spaces, and ecological assets into structured map layers.",
+                "Developed interactive controls for filtering, toggling, and exploring infrastructure categories.",
+                "Optimized rendering and data loading strategies to ensure smooth performance with large spatial datasets.",
+                "Ensured cross-browser compatibility and responsive layout for accessibility across devices."
+            ],
+            outcome: [
+                "Delivered a publicly accessible mapping platform supporting sustainable urban planning initiatives.",
+                "Improved visibility and understanding of blue-green infrastructure distribution.",
+                "Enabled planners and stakeholders to make more informed, data-driven decisions.",
+                "Created a scalable architecture that can accommodate future dataset expansion."
+            ],
+        },
+    },
     {
         slug: "webscrapping",
         title: "WebScrapping",
@@ -204,6 +252,4 @@ export const projects: Project[] = [
             ],
         },
     }
-
-
 ];
