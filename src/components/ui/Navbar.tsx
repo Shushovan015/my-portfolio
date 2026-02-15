@@ -43,7 +43,11 @@ export default function Navbar({ onSwitchToChat }: NavbarProps) {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a href="/resume.pdf" download className="pill hover:bg-[var(--ink)] hover:text-[var(--bg)]">
+            <a
+              href="/resume.pdf"
+              download
+              className="pill bg-[var(--bg)] text-[var(--ink)] hover:bg-[var(--bg-soft)] hover:text-[var(--ink)]"
+            >
               Resume
             </a>
             {onSwitchToChat ? (

@@ -24,10 +24,12 @@ export default function AboutSection() {
           <p className="text-3xl font-semibold">4+</p>
           <p className="mt-2 text-sm uppercase tracking-[0.08em] text-[var(--ink-soft)]">Years Experience</p>
         </article>
-        <article className="rounded-3xl border border-[var(--line)] bg-[color:rgba(235,230,216,0.45)] p-5">
-          <p className="text-3xl font-semibold">15+</p>
-          <p className="mt-2 text-sm uppercase tracking-[0.08em] text-[var(--ink-soft)]">Shipped Features</p>
-        </article>
+       <article className="rounded-3xl border border-[var(--line)] bg-[color:rgba(235,230,216,0.45)] p-5">
+  <p className="text-3xl font-semibold">3</p>
+  <p className="mt-2 text-sm uppercase tracking-[0.08em] text-[var(--ink-soft)]">
+    Domains: GIS, Data Viz, Product UI
+  </p>
+</article>
         <article className="rounded-3xl border border-[var(--line)] bg-[color:rgba(235,230,216,0.45)] p-5">
           <p className="text-3xl font-semibold">100%</p>
           <p className="mt-2 text-sm uppercase tracking-[0.08em] text-[var(--ink-soft)]">Performance Mindset</p>
