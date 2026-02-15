@@ -47,8 +47,8 @@ const groups: SkillGroup[] = [
       { name: "TypeScript", Icon: SiTypescript, level: "Proficient" },
       { name: "Redux", Icon: SiRedux, level: "Intermediate" },
       { name: "Tailwind CSS", Icon: SiTailwindcss, level: "Intermediate" },
-      { name: "HTML5", Icon: SiHtml5, level: "Intermediate" },
-      { name: "CSS3", Icon: SiCss3, level: "Intermediate" },
+    //   { name: "HTML5", Icon: SiHtml5, level: "Intermediate" },
+    //   { name: "CSS3", Icon: SiCss3, level: "Intermediate" },
     ],
   },
   {
@@ -80,7 +80,7 @@ const groups: SkillGroup[] = [
       { name: "Docker", Icon: SiDocker, level: "Proficient" },
       { name: "Webpack", Icon: SiWebpack, level: "Proficient" },
       { name: "CI/CD", Icon: BiGitBranch, level: "Proficient" },
-      { name: "Accessibility", Icon: TbAccessible , level: "Proficient" },
+    //   { name: "Accessibility", Icon: TbAccessible , level: "Proficient" },
     ],
   },
 ];
