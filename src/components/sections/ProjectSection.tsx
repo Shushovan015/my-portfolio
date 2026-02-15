@@ -74,102 +74,124 @@ export default function ProjectsSection() {
 
       {activeProject ? (
         <div
-          className="fixed inset-0 z-[100] bg-black/55 p-4 backdrop-blur-sm sm:p-8"
+          className="fixed inset-0 z-[100] overflow-y-auto bg-black/55 p-4 backdrop-blur-sm sm:p-8"
           onClick={(event) => {
             if (event.target === event.currentTarget) setActiveProject(null);
           }}
         >
-          <div className="mx-auto h-full w-full max-w-4xl overflow-y-auto rounded-3xl border border-[var(--line)] bg-[var(--bg)] p-5 sm:p-7">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="eyebrow">Project details</p>
-                <h3 className="mt-2 text-2xl font-semibold sm:text-3xl">{activeProject.title}</h3>
-                <p className="mt-2 text-sm text-[var(--ink-soft)]">
-                  {activeProject.year}
-                  {activeProject.role ? ` - ${activeProject.role}` : ""}
-                </p>
-              </div>
+          <div className="mx-auto my-4 w-full max-w-4xl rounded-3xl border border-[var(--line)] bg-[var(--bg)] shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
+            <div className="modal-scroll max-h-[calc(100vh-4rem)] overflow-y-auto p-5 sm:max-h-[calc(100vh-6rem)] sm:p-7">
+              <div className="mb-4 flex items-start justify-between gap-4 border-b border-[var(--line)] pb-4">
+                <div>
+                  <p className="eyebrow">Project details</p>
+                  <h3 className="mt-2 text-2xl font-semibold sm:text-3xl">{activeProject.title}</h3>
+                  <p className="mt-2 text-sm text-[var(--ink-soft)]">
+                    {activeProject.year}
+                    {activeProject.role ? ` - ${activeProject.role}` : ""}
+                  </p>
+                </div>
 
-              <button
-                type="button"
-                onClick={() => setActiveProject(null)}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)]"
-                aria-label="Close popup"
-              >
-                <X className="h-4 w-4" />
-              </button>
-            </div>
-
-            {activeProject.cover ? (
-              <div className="relative mt-5 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[var(--line)]">
-                <Image src={activeProject.cover.src} alt={activeProject.cover.alt} fill className="object-cover" />
-              </div>
-            ) : null}
-
-            <p className="mt-5 text-sm leading-relaxed text-[var(--ink-soft)]">{activeProject.summary}</p>
-
-            <div className="mt-5 flex flex-wrap gap-2">
-              {activeProject.tags.map((tag) => (
-                <span
-                  key={`${activeProject.slug}-modal-${tag}`}
-                  className="rounded-full border border-[var(--line)] px-3 py-1 text-[11px] uppercase tracking-[0.07em]"
+                <button
+                  type="button"
+                  onClick={() => setActiveProject(null)}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--bg)]"
+                  aria-label="Close popup"
                 >
-                  {tag}
-                </span>
-              ))}
-            </div>
-
-            {activeProject.highlights?.length ? (
-              <div className="mt-7">
-                <p className="eyebrow">Highlights</p>
-                <ul className="mt-3 space-y-2 text-sm text-[var(--ink-soft)]">
-                  {activeProject.highlights.map((item, index) => (
-                    <li key={`${activeProject.slug}-h-${index}`}>- {item}</li>
-                  ))}
-                </ul>
+                  <X className="h-4 w-4" />
+                </button>
               </div>
-            ) : null}
 
-            {activeProject.caseStudy?.problem ? (
-              <div className="mt-7">
-                <p className="eyebrow">Problem</p>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">{activeProject.caseStudy.problem}</p>
-              </div>
-            ) : null}
-
-            {activeProject.caseStudy?.approach?.length ? (
-              <div className="mt-7">
-                <p className="eyebrow">Approach</p>
-                <ul className="mt-3 space-y-2 text-sm text-[var(--ink-soft)]">
-                  {activeProject.caseStudy.approach.map((item, index) => (
-                    <li key={`${activeProject.slug}-a-${index}`}>- {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-
-            {activeProject.caseStudy?.outcome?.length ? (
-              <div className="mt-7">
-                <p className="eyebrow">Outcome</p>
-                <ul className="mt-3 space-y-2 text-sm text-[var(--ink-soft)]">
-                  {activeProject.caseStudy.outcome.map((item, index) => (
-                    <li key={`${activeProject.slug}-o-${index}`}>- {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              {activeProject.links.live ? (
-                <a href={activeProject.links.live} target="_blank" rel="noreferrer" className="pill">
-                  Live
-                </a>
+              {activeProject.cover ? (
+                <div className="relative mt-5 aspect-[16/9] w-full overflow-hidden rounded-2xl border border-[var(--line)]">
+                  <Image src={activeProject.cover.src} alt={activeProject.cover.alt} fill className="object-cover" />
+                </div>
               ) : null}
-              {activeProject.links.github ? (
-                <a href={activeProject.links.github} target="_blank" rel="noreferrer" className="pill">
-                  GitHub
-                </a>
+
+              <p className="mt-5 text-sm leading-relaxed text-[var(--ink-soft)]">{activeProject.summary}</p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {activeProject.tags.map((tag) => (
+                  <span
+                    key={`${activeProject.slug}-modal-${tag}`}
+                    className="rounded-full border border-[var(--line)] px-3 py-1 text-[11px] uppercase tracking-[0.07em]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {activeProject.highlights?.length ? (
+                <div className="mt-7">
+                  <p className="eyebrow">Highlights</p>
+                  <ul className="mt-3 space-y-2">
+                    {activeProject.highlights.map((item, index) => (
+                      <li
+                        key={`${activeProject.slug}-h-${index}`}
+                        className="flex items-start gap-3 rounded-xl border border-[var(--line)] bg-[color:rgba(244,241,232,0.72)] px-3 py-2.5"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--ink)]/70" />
+                        <span className="text-sm leading-relaxed text-[var(--ink-soft)]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               ) : null}
+
+              {activeProject.caseStudy?.problem ? (
+                <div className="mt-7">
+                  <p className="eyebrow">Problem</p>
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">{activeProject.caseStudy.problem}</p>
+                </div>
+              ) : null}
+
+              {activeProject.caseStudy?.approach?.length ? (
+                <div className="mt-7">
+                  <p className="eyebrow">Approach</p>
+                  <ul className="mt-3 space-y-2">
+                    {activeProject.caseStudy.approach.map((item, index) => (
+                      <li
+                        key={`${activeProject.slug}-a-${index}`}
+                        className="flex items-start gap-3 rounded-xl border border-[var(--line)] bg-[color:rgba(244,241,232,0.72)] px-3 py-2.5"
+                      >
+                        <span className="mt-0.5 inline-flex h-5 min-w-5 items-center justify-center rounded-full border border-[var(--line)] text-[10px] font-semibold text-[var(--ink-soft)]">
+                          {index + 1}
+                        </span>
+                        <span className="text-sm leading-relaxed text-[var(--ink-soft)]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              {activeProject.caseStudy?.outcome?.length ? (
+                <div className="mt-7">
+                  <p className="eyebrow">Outcome</p>
+                  <ul className="mt-3 space-y-2">
+                    {activeProject.caseStudy.outcome.map((item, index) => (
+                      <li
+                        key={`${activeProject.slug}-o-${index}`}
+                        className="flex items-start gap-3 rounded-xl border border-[var(--line)] bg-[color:rgba(244,241,232,0.72)] px-3 py-2.5"
+                      >
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--ink)]/70" />
+                        <span className="text-sm leading-relaxed text-[var(--ink-soft)]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                {activeProject.links.live ? (
+                  <a href={activeProject.links.live} target="_blank" rel="noreferrer" className="pill">
+                    Live
+                  </a>
+                ) : null}
+                {activeProject.links.github ? (
+                  <a href={activeProject.links.github} target="_blank" rel="noreferrer" className="pill">
+                    GitHub
+                  </a>
+                ) : null}
+              </div>
             </div>
           </div>
         </div>

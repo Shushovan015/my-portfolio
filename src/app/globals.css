@@ -142,4 +142,24 @@ section {
   }
 }
 
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(19, 18, 15, 0.35) transparent;
+}
+
+.modal-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(19, 18, 15, 0.3);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
 
