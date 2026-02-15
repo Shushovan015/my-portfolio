@@ -42,36 +42,35 @@
 
 
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
+import { Space_Grotesk, Fraunces } from "next/font/google";
 import "./globals.css";
+
+const sans = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const serif = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-serif",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
-    default: "Shushovan Shakya | Portfolio Chat",
+    default: "Shushovan Shakya | Portfolio",
     template: "%s | Shushovan Shakya",
   },
-  description:
-    "Conversational portfolio for Shushovan Shakya. Ask about projects, skills, resume, and contact details.",
-  metadataBase: new URL("https://shushovan-shakya.vercel.app/"),
-  openGraph: {
-    title: "Shushovan Shakya | Portfolio Chat",
-    description:
-      "Conversational portfolio for Shushovan Shakya. Ask about projects, skills, resume, and contact details.",
-    type: "website",
-    images: ["/og.png"],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Shushovan Shakya | Portfolio Chat",
-    description:
-      "Conversational portfolio for Shushovan Shakya. Ask about projects, skills, resume, and contact details.",
-    images: ["/og.png"],
-  },
+  description: "Frontend engineer portfolio with bold, editorial web design.",
 };
 
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className={`${sans.variable} ${serif.variable} antialiased`}>{children}</body>
     </html>
   );
 }
+

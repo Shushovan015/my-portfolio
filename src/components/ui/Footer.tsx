@@ -1,9 +1,9 @@
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-zinc-800/60 py-10 text-sm text-zinc-400">
-      <div className="mx-auto max-w-6xl px-6 flex items-center justify-between">
-        <p>© {new Date().getFullYear()} My Portfolio</p>
-        <p className="text-zinc-500">Built with Next.js + Three.js</p>
+    <footer className="border-t border-[var(--line)] py-8">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-4 text-xs uppercase tracking-[0.08em] text-[var(--ink-soft)] sm:px-8">
+        <p>© {new Date().getFullYear()} Shushovan Shakya</p>
+        <p>Next.js Portfolio</p>
       </div>
     </footer>
   );

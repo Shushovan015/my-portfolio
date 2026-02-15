@@ -1,9 +1,9 @@
 "use client";
 
-const nav = [
+const navItems = [
   { label: "Home", id: "home" },
   { label: "About", id: "about" },
-  { label: "Projects", id: "projects" },
+  { label: "Work", id: "projects" },
   { label: "Skills", id: "skills" },
   { label: "Contact", id: "contact" },
 ];
@@ -20,34 +20,54 @@ type NavbarProps = {
 
 export default function Navbar({ onSwitchToChat }: NavbarProps) {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/60 bg-zinc-950/70 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-6">
-        <button onClick={() => scrollToId("home")} className="font-semibold tracking-tight">
-          SHUSHOVAN SHAKYA
-        </button>
+    <header className="fixed left-0 right-0 top-0 z-50 border-b border-[var(--line)] bg-[color:rgba(244,241,232,0.9)] backdrop-blur">
+      <div className="mx-auto max-w-[1280px] px-4 py-3 sm:px-8">
+        <div className="flex items-center justify-between gap-3">
+          <button
+            onClick={() => scrollToId("home")}
+            className="text-sm font-semibold uppercase tracking-[0.13em]"
+          >
+            SHUSHOVAN SHAKYA
+          </button>
 
-        <div className="flex items-center gap-2">
-          <nav className="flex items-center gap-1 text-sm">
-            {nav.map((item) => (
+          <nav className="hidden items-center gap-1 md:flex">
+            {navItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => scrollToId(item.id)}
-                className="rounded-2xl px-4 py-2 text-zinc-300 transition-colors hover:bg-zinc-900/40 hover:text-white"
+                className="rounded-full px-3 py-1.5 text-xs font-medium uppercase tracking-[0.1em] text-[var(--ink-soft)] hover:bg-[var(--bg-soft)] hover:text-[var(--ink)]"
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          {onSwitchToChat ? (
+          <div className="flex items-center gap-2">
+            <a href="/resume.pdf" download className="pill hover:bg-[var(--ink)] hover:text-[var(--bg)]">
+              Resume
+            </a>
+            {onSwitchToChat ? (
+              <button
+                type="button"
+                onClick={onSwitchToChat}
+                className="hidden rounded-full border border-[var(--line)] px-3 py-1.5 text-xs uppercase tracking-[0.1em] md:inline-flex"
+              >
+                Chat View
+              </button>
+            ) : null}
+          </div>
+        </div>
+
+        <div className="mt-2 flex gap-1 overflow-x-auto pb-1 md:hidden">
+          {navItems.map((item) => (
             <button
-              type="button"
-              onClick={onSwitchToChat}
-              className="rounded-xl border border-zinc-700 px-3 py-2 text-xs text-zinc-200 transition hover:border-zinc-500 hover:bg-zinc-900/50"
+              key={`mobile-${item.id}`}
+              onClick={() => scrollToId(item.id)}
+              className="rounded-full border border-[var(--line)] px-3 py-1.5 text-[11px] uppercase tracking-[0.08em]"
             >
-              Conversation View
+              {item.label}
             </button>
-          ) : null}
+          ))}
         </div>
       </div>
     </header>

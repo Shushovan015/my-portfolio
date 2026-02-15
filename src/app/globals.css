@@ -1,25 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --bg-0: #0b1020;
-  --bg-1: #10182d;
-  --bg-2: #15213a;
-  --text-0: #e8eefb;
-  --text-1: #aab7cf;
-  --line: rgba(148, 163, 184, 0.28);
-  --panel: rgba(15, 23, 42, 0.62);
+  --bg: #f4f1e8;
+  --bg-soft: #ebe6d8;
+  --ink: #13120f;
+  --ink-soft: #4a473f;
+  --line: #c9c2b0;
+  --accent: #e55f2b;
 }
-
-body {
-  margin: 0;
-  color: var(--text-0);
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  background:
-    radial-gradient(900px 500px at 8% -10%, rgba(56, 189, 248, 0.12), transparent 58%),
-    radial-gradient(900px 500px at 95% 0%, rgba(99, 102, 241, 0.12), transparent 58%),
-    linear-gradient(165deg, var(--bg-0), var(--bg-1) 46%, var(--bg-2));
-}
-
 
 * {
   box-sizing: border-box;
@@ -27,33 +15,131 @@ body {
 
 html,
 body {
-  height: 100%;
-  overflow: hidden;
+  margin: 0;
+  min-height: 100%;
   overflow-x: hidden;
 }
 
-[data-nextjs-devtools],
-[data-nextjs-toast],
-#__next-build-watcher {
-  display: none !important;
+body {
+  color: var(--ink);
+  font-family: var(--font-sans), "Segoe UI", sans-serif;
+  background:
+    radial-gradient(900px 500px at 100% -8%, rgba(229, 95, 43, 0.16), transparent 62%),
+    radial-gradient(800px 500px at 0% 8%, rgba(31, 92, 110, 0.12), transparent 58%),
+    var(--bg);
 }
 
-@keyframes riseIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif), Georgia, serif;
+  letter-spacing: -0.03em;
 }
 
-.message-enter {
-  animation: riseIn 0.24s ease both;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 section {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 110px;
 }
+
+::selection {
+  background: #13120f;
+  color: #f4f1e8;
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image: radial-gradient(#000 0.35px, transparent 0.35px);
+  background-size: 3px 3px;
+}
+
+.section-wrap {
+  border-top: 1px solid var(--line);
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.section-title {
+  font-size: clamp(2.3rem, 7vw, 6rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.marquee {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.project-card,
+.project-card * {
+  cursor: pointer !important;
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-scroll 22s linear infinite;
+}
+
+.marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.marquee-word {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  margin-inline: 0.5rem;
+}
+
+.marquee-word::after {
+  content: "•";
+  margin-left: 1.25rem;
+  opacity: 0.45;
+  font-weight: 400;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+
