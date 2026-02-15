@@ -40,7 +40,7 @@ export default function Hero() {
           <div className="flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 rounded-full bg-[var(--ink)] px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] text-[var(--bg)]"
+              className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-semibold uppercase tracking-[0.08em] !text-white transition hover:bg-[#1a1a1a]"
             >
               View Work
               <ArrowUpRight className="h-4 w-4" />
