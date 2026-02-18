@@ -64,7 +64,13 @@ export const metadata: Metadata = {
     template: "%s | Shushovan Shakya",
   },
   description: "Frontend engineer portfolio with bold, editorial web design.",
+  icons: {
+    icon: "/Shushovan.png",
+    shortcut: "/Shushovan.png",
+    apple: "/Shushovan.png",
+  },
 };
+
 
 export default function SiteLayout({ children }: { children: ReactNode }) {
   return (
