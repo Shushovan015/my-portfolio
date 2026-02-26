@@ -5,17 +5,30 @@ import AboutSection from "@/components/sections/AboutSection";
 import ProjectsSection from "@/components/sections/ProjectSection";
 import ToolsGrid from "@/components/sections/ToolsGrid";
 import ContactSection from "@/components/sections/ContactSection";
+import ScrollHud from "@/components/ui/ScrollHud";
+import SectionReveal from "@/components/ui/SectionReveal";
+import PageLoader from "@/components/ui/PageLoader";
 
 export default function HomePage() {
   return (
-    <div className="grain min-h-screen">
+    <div className="app-shell min-h-screen">
+      <PageLoader />
+      <ScrollHud />
       <Navbar />
-      <main className="mx-auto max-w-[1280px] px-4 pt-28 sm:px-8">
+      <main id="main-content" className="mx-auto max-w-[1240px] px-4 sm:px-8">
         <Hero />
-        <AboutSection />
-        <ProjectsSection />
-        <ToolsGrid />
-        <ContactSection />
+        <SectionReveal delay={0.03}>
+          <AboutSection />
+        </SectionReveal>
+        <SectionReveal delay={0.05}>
+          <ProjectsSection />
+        </SectionReveal>
+        <SectionReveal delay={0.07}>
+          <ToolsGrid />
+        </SectionReveal>
+        <SectionReveal delay={0.09}>
+          <ContactSection />
+        </SectionReveal>
       </main>
       <Footer />
     </div>

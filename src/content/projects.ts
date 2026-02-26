@@ -26,14 +26,18 @@ export const projects: Project[] = [
     {
         slug: "foam3d",
         title: "FOAM3D",
-        summary:
-            "A 3D visualization and image processing tool for creating customizable shapes and extracting outlines from images.",
-        year: 2023,
+        year: 2024,
         role: "Full Stack",
         tags: ["Three.js", "WebGL", "Python", "Docker", "Image Processing"],
         links: {
             live: "https://fm24api.com/",
         },
+        cover: {
+            src: "/projects/foam3d/cover.jpg",
+            alt: "FOAM3D preview",
+        },
+        summary:
+            "Built a 3D web tool that converts image references into editable geometry using automated outline extraction and interactive Three.js controls.",
         highlights: [
             "Allows users to create and customize 3D shapes in real-time.",
             "Enables extraction of accurate geometry from uploaded images.",
@@ -41,10 +45,6 @@ export const projects: Project[] = [
             "Supports smooth 3D visualization across devices and browsers.",
             "Delivers a consistent, scalable web platform for 3D content creation."
         ],
-        cover: {
-            src: "/projects/foam3d/cover.jpg",
-            alt: "FOAM3D preview",
-        },
         caseStudy: {
             problem:
                 "Users needed an interactive platform to generate, visualize, and refine complex 3D shapes from images. Existing solutions were static, slow, or required extensive manual editing.",
@@ -169,7 +169,7 @@ export const projects: Project[] = [
         title: "Blue-Green Infrastructure Mapping Platform",
         summary:
             "An interactive geospatial web platform for mapping and visualizing blue and green infrastructure elements to support sustainable urban planning in Kathmandu.",
-        year: 2024,
+        year: 2021,
         role: "Frontend / GIS Developer",
         tags: [
             "React",

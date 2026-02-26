@@ -1,40 +1,62 @@
+const highlights = [
+  "Product-first frontend engineering with clean architecture",
+  "Strong geospatial + data-viz implementation experience",
+  "Interaction-rich UI without sacrificing accessibility/performance",
+];
+
+const stats = [
+  { value: "4+", label: "Years of frontend delivery" },
+  { value: "6+", label: "Complex production projects" },
+  { value: "3", label: "Core domains (GIS, Data Viz, Product UI)" },
+];
+
 export default function AboutSection() {
-    return (
-        <section id="about" className="section-wrap">
-            <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
-                <div>
-                    <p className="eyebrow">Who I am</p>
-                    <h2 className="section-title mt-3">Design + Engineering</h2>
-                </div>
+  return (
+   <section id="about" className="section-wrap screen-section">
+      <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
+        <div>
+          <p className="eyebrow">Profile</p>
+          <h2 className="section-title mt-3">Professional Value</h2>
+        </div>
 
-                <div className="space-y-5 text-base leading-relaxed text-[var(--ink-soft)]">
-                    <p>
-                        I am Shushovan Shakya, a frontend developer focused on turning complex product ideas into clean,
-                        expressive interfaces.
-                    </p>
-                    <p>
-                        My stack includes React, Next.js, TypeScript, Three.js, and data visualization tooling. I care
-                        about readability, accessibility, and speed from day one.
-                    </p>
-                </div>
+        <article className="pro-panel overflow-hidden">
+          <div className="panel-head">
+            <div className="panel-dots">
+              <span className="dot bg-[var(--accent-2)]" />
+              <span className="dot bg-[var(--accent)]" />
+              <span className="dot bg-[var(--ok)]" />
             </div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.1em] muted">Summary</p>
+          </div>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                <article className="rounded-3xl border border-[var(--line)] bg-[color:rgba(235,230,216,0.45)] p-5">
-                    <p className="text-3xl font-semibold">4+</p>
-                    <p className="mt-2 text-sm uppercase tracking-[0.08em] text-[var(--ink-soft)]">Years Experience</p>
-                </article>
-                <article className="rounded-3xl border border-[var(--line)] bg-[color:rgba(235,230,216,0.45)] p-5">
-                    <p className="text-3xl font-semibold">3</p>
-                    <p className="mt-2 text-sm uppercase tracking-[0.08em] text-[var(--ink-soft)]">
-                        Domains: GIS, Data Viz, Product UI
-                    </p>
-                </article>
-                <article className="rounded-3xl border border-[var(--line)] bg-[color:rgba(235,230,216,0.45)] p-5">
-                    <p className="text-3xl font-semibold">100%</p>
-                    <p className="mt-2 text-sm uppercase tracking-[0.08em] text-[var(--ink-soft)]">Performance Mindset</p>
-                </article>
-            </div>
-        </section>
-    );
+          <div className="space-y-4 p-5 text-sm leading-relaxed muted">
+            <p>
+              I am Shushovan Shakya, a frontend developer focused on building robust interfaces for complex workflows.
+            </p>
+            <p>
+              My stack includes React, Next.js, TypeScript, D3, Three.js, and OpenLayers. I prioritize maintainability,
+              performance, and user trust.
+            </p>
+
+            <ul className="space-y-2">
+              {highlights.map((item) => (
+                <li key={item} className="rounded-lg border border-[var(--line)] bg-[color:rgba(255,255,255,0.02)] px-3 py-2">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div className="mt-10 grid gap-4 sm:grid-cols-3">
+        {stats.map((item) => (
+          <article key={item.label} className="pro-panel p-5">
+            <p className="text-3xl font-semibold">{item.value}</p>
+            <p className="mt-2 font-mono text-xs uppercase tracking-[0.1em] muted">{item.label}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 }
