@@ -19,8 +19,16 @@ export type Project = {
         src: string;
         alt: string;
     };
+    previewMedia?: {
+        src: string;
+        kind: "video" | "gif";
+        alt?: string;
+        poster?: string;
+        durationMs?: number;
+    }[];
     highlights?: string[];
 };
+
 
 export const projects: Project[] = [
     {
@@ -36,6 +44,11 @@ export const projects: Project[] = [
             src: "/projects/foam3d/cover.jpg",
             alt: "FOAM3D preview",
         },
+        previewMedia: [
+            { src: "/projects/foam3d/preview-1.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+            { src: "/projects/foam3d/preview-2.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+            // { src: "/projects/foam3d/preview-3.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+        ],
         summary:
             "Built a 3D web tool that converts image references into editable geometry using automated outline extraction and interactive Three.js controls.",
         highlights: [
@@ -99,6 +112,11 @@ export const projects: Project[] = [
             src: "/projects/urban-tourist-visualization/cover.jpg",
             alt: "Real-time urban crowd visualization interface",
         },
+        // previewMedia: [
+        //     { src: "/projects/foam3d/preview-1.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+        //     { src: "/projects/foam3d/preview-2.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+        //     { src: "/projects/foam3d/preview-3.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+        // ],
         caseStudy: {
             problem:
                 "Historic city centers often face overcrowding, reducing the quality of the tourist experience and urban livability. Visitors needed an easy-to-understand system to assess crowds and make decisions, rather than raw numbers or complex metrics.",
@@ -140,6 +158,9 @@ export const projects: Project[] = [
             src: "/projects/changunarayan-open-data/cover.jpg",
             alt: "Changunarayan Open Data Portal preview",
         },
+        previewMedia: [
+            { src: "/projects/changunarayan-open-data/preview-1.mp4", kind: "video", poster: "/projects/changunarayan-open-data/cover.jpg" },
+        ],
         caseStudy: {
             problem:
                 "The municipality lacked a platform to centralize, manage, and visualize public sector data. Data was fragmented, updates were manual, and citizens and planners had limited access to insights needed for transparency and decision-making.",
@@ -193,6 +214,11 @@ export const projects: Project[] = [
             src: "/projects/blue-green-infrastructure/cover.png",
             alt: "Blue-Green Infrastructure Mapping Platform preview",
         },
+        previewMedia: [
+            { src: "/projects/blue-green-infrastructure/preview-1.mp4", kind: "video", poster: "/projects/blue-green-infrastructure/cover.jpg" },
+            // { src: "/projects/foam3d/preview-2.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+            // { src: "/projects/foam3d/preview-3.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+        ],
         caseStudy: {
             problem:
                 "Urban planners and stakeholders lacked an accessible, interactive platform to explore blue and green infrastructure data. Existing datasets were fragmented and not easily interpretable for decision-making or public engagement.",
@@ -211,45 +237,50 @@ export const projects: Project[] = [
             ],
         },
     },
-    {
-        slug: "webscrapping",
-        title: "WebScrapping",
-        summary:
-            "A web scraping project that collects and processes data from target sites for structured use.",
-        year: 2024,
-        role: "Developer",
-        tags: ["Web Scraping", "Automation", "Data Collection", "Next.js", "Typescript"],
-        links: {
-            github: "https://github.com/Shushovan015/WebScrapping",
-        },
-        highlights: [
-            "Automates data extraction from multiple target websites.",
-            "Processes and structures data for easy analysis and reuse.",
-            "Supports scalable and repeatable scraping workflows.",
-            "Reduces manual effort in collecting large datasets.",
-            "Ensures data consistency and reliability through automated pipelines."
-        ],
-        cover: {
-            src: "/projects/webscrapping/cover.jpg",
-            alt: "WebScrapping project preview",
-        },
-        caseStudy: {
-            problem:
-                "Collecting data manually from multiple websites was time-consuming, error-prone, and difficult to reuse for analysis. A structured automated solution was needed to handle repeated extraction efficiently.",
-            approach: [
-                "Identified target websites and mapped the data fields to extract.",
-                "Developed automated scraping scripts using Python (or other relevant libraries) to fetch and parse content reliably.",
-                "Structured the extracted data into standardized formats (CSV, JSON, or database) for downstream use.",
-                "Implemented error handling and logging to ensure consistency and reliability across multiple runs.",
-                "Built repeatable workflows that can be scheduled or triggered for periodic updates.",
-                "Tested scripts with varying website structures to handle edge cases and dynamic content."
-            ],
-            outcome: [
-                "Delivered a reliable automated data extraction pipeline, reducing manual data collection effort.",
-                "Provided structured datasets ready for analysis or integration into other systems.",
-                "Enabled scalable and repeatable scraping workflows for future data collection needs.",
-                "Improved data accuracy and consistency by minimizing human errors."
-            ],
-        },
-    }
+    // {
+    //     slug: "webscrapping",
+    //     title: "WebScrapping",
+    //     summary:
+    //         "A web scraping project that collects and processes data from target sites for structured use.",
+    //     year: 2024,
+    //     role: "Developer",
+    //     tags: ["Web Scraping", "Automation", "Data Collection", "Next.js", "Typescript"],
+    //     links: {
+    //         github: "https://github.com/Shushovan015/WebScrapping",
+    //     },
+    //     highlights: [
+    //         "Automates data extraction from multiple target websites.",
+    //         "Processes and structures data for easy analysis and reuse.",
+    //         "Supports scalable and repeatable scraping workflows.",
+    //         "Reduces manual effort in collecting large datasets.",
+    //         "Ensures data consistency and reliability through automated pipelines."
+    //     ],
+    //     cover: {
+    //         src: "/projects/webscrapping/cover.jpg",
+    //         alt: "WebScrapping project preview",
+    //     },
+    //     previewMedia: [
+    //         { src: "/projects/foam3d/preview-1.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+    //         { src: "/projects/foam3d/preview-2.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+    //         { src: "/projects/foam3d/preview-3.mp4", kind: "video", poster: "/projects/foam3d/cover.jpg" },
+    //     ],
+    //     caseStudy: {
+    //         problem:
+    //             "Collecting data manually from multiple websites was time-consuming, error-prone, and difficult to reuse for analysis. A structured automated solution was needed to handle repeated extraction efficiently.",
+    //         approach: [
+    //             "Identified target websites and mapped the data fields to extract.",
+    //             "Developed automated scraping scripts using Python (or other relevant libraries) to fetch and parse content reliably.",
+    //             "Structured the extracted data into standardized formats (CSV, JSON, or database) for downstream use.",
+    //             "Implemented error handling and logging to ensure consistency and reliability across multiple runs.",
+    //             "Built repeatable workflows that can be scheduled or triggered for periodic updates.",
+    //             "Tested scripts with varying website structures to handle edge cases and dynamic content."
+    //         ],
+    //         outcome: [
+    //             "Delivered a reliable automated data extraction pipeline, reducing manual data collection effort.",
+    //             "Provided structured datasets ready for analysis or integration into other systems.",
+    //             "Enabled scalable and repeatable scraping workflows for future data collection needs.",
+    //             "Improved data accuracy and consistency by minimizing human errors."
+    //         ],
+    //     },
+    // }
 ];
