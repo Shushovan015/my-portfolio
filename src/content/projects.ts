@@ -186,6 +186,54 @@ export const projects: Project[] = [
         },
     },
     {
+        slug: "changu-dashboard",
+        title: "Changunarayan Open Data Dashboard",
+        year: 2022,
+        role: "Frontend Developer",
+        tags: ["React", "Redux", "Redux Saga", "OpenLayers", "Axios", "Sass", "Webpack", "GIS"],
+        links: {
+            // live: "https://changuportal.naxa.com.np/",
+        },
+        cover: {
+            src: "/projects/changu-dashboard/cover.png",
+            alt: "Representative preview of Changunarayan Open Data Dashboard",
+        },
+        previewMedia: [
+
+        ],
+
+        summary:
+            "Developed a React-based admin dashboard for managing open data, GIS map layers, tourism content, demographic indicators, digital library resources, and municipal datasets for the Changunarayan Open Data Portal.",
+        highlights: [
+            "Built data management screens for uploading, organizing, and editing municipal datasets.",
+            "Integrated interactive GIS map layers using OpenLayers with support for vector, tile, and WMS layers.",
+            "Implemented dashboard modules for demographics, tourism, SDG data, departments, and digital library content.",
+            "Connected the frontend with REST APIs using Axios, Redux, and Redux Saga for structured state and side-effect management.",
+            "Created reusable UI components for tables, forms, modals, dropdowns, pagination, uploads, and map controls."
+        ],
+        caseStudy: {
+            problem:
+                "The municipality needed a centralized dashboard to manage public data, map layers, tourism information, demographic indicators, and digital resources. Existing workflows were scattered and required a more structured interface for administrators to maintain portal content efficiently.",
+            approach: [
+                "Developed the frontend using React and a modular component structure to support multiple dashboard sections and administrative workflows.",
+                "Implemented Redux, Redux Persist, and Redux Saga to manage application state, authentication state, API requests, loading states, and asynchronous data operations.",
+                "Integrated OpenLayers-based map functionality to visualize municipal boundaries, GeoServer layers, WMS tile layers, vector layers, and dataset-specific map styling.",
+                "Built data upload and management flows for categories, data groups, layers, attributes, filters, labels, public fields, and popup display settings.",
+                "Created dedicated management modules for tourism destinations, popular trails, SDG records, digital library publications, departments, requested data, and demographic indicators.",
+                "Designed reusable form, table, modal, dropdown, pagination, loader, toast, and upload components to keep the dashboard consistent and maintainable.",
+                "Connected the dashboard to staging and production REST APIs, including token-based authentication and protected admin routes.",
+                "Structured the application with separate services, reducers, sagas, selectors, routes, views, and shared components for long-term scalability."
+            ],
+            outcome: [
+                "Delivered a centralized admin dashboard for managing municipal open data and portal content.",
+                "Improved the ability to organize and publish GIS datasets through interactive map and layer management tools.",
+                "Enabled administrators to manage multiple portal sections from one interface, including tourism, demographics, SDG, departments, and publications.",
+                "Created a scalable React architecture that separates API services, state management, routes, and UI views.",
+                "Supported a data-driven public portal experience by making backend content easier to maintain and update."
+            ],
+        },
+    },
+    {
         slug: "blue-green-infrastructure",
         title: "Blue-Green Infrastructure Mapping Platform",
         summary:
