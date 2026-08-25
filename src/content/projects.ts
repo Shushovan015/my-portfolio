@@ -32,6 +32,67 @@ export type Project = {
 
 export const projects: Project[] = [
     {
+        slug: "berlin-transit-live",
+        title: "Berlin Transit Live",
+        year: 2026,
+        role: "Full Stack",
+        tags: [
+            "React",
+            "TypeScript",
+            "Node.js",
+            "Vite",
+            "Zod",
+            "GraphQL",
+            "Vitest",
+            "Tailwind CSS",
+        ],
+        links: {
+            github: "https://github.com/Shushovan015/Berlin-Transit-live",
+        },
+        cover: {
+            src: "/projects/berlin-transit-live/cover.jpg",
+            alt: "Berlin Transit Live project preview",
+        },
+        previewMedia: [
+            {
+                src: "/projects/berlin-transit-live/preview-1.mp4",
+                kind: "video",
+                poster: "/projects/berlin-transit-live/cover.jpg",
+            },
+        ],
+        summary:
+            "Developing a full-stack TypeScript application for visualizing estimated Berlin public transport positions, with a validated VBB data pipeline and a separate Node.js backend.",
+        highlights: [
+            "Built a strictly typed data pipeline for estimated U-Bahn and S-Bahn vehicle positions.",
+            "Validates untrusted VBB API responses at runtime with Zod before they enter the application.",
+            "Separates external VBB data-transfer objects from stable application domain models.",
+            "Moves external transport-data access from the browser into a dedicated Node.js backend.",
+            "Uses automated tests to verify URL construction, HTTP failures, cancellation, validation, and domain mapping.",
+        ],
+        caseStudy: {
+            problem:
+                "Real-time public transport data comes from an external API and cannot be trusted to match the application's expected structure. Fetching it directly from every browser would also duplicate requests and tightly couple the user interface to the external VBB service.",
+            approach: [
+                "Established a strict TypeScript foundation for frontend and backend development.",
+                "Modeled the required subset of the VBB radar response instead of coupling the application to the complete external response.",
+                "Treated every network response as unknown until it passed runtime validation with Zod.",
+                "Separated VBB-specific DTOs from application-owned vehicle, transport-mode, and geographic-position models.",
+                "Implemented pure mapping functions that convert validated VBB movements into stable domain objects.",
+                "Built and tested a radar client that handles URL construction, HTTP errors, cancellation signals, validation failures, and domain mapping.",
+                "Introduced an npm workspace containing an independently buildable Node.js backend.",
+                "Moved the VBB integration and its tests from the browser application into the backend while preserving existing behavior.",
+                "Used mocked network responses in tests so verification remains fast and independent of the live VBB service.",
+            ],
+            outcome: [
+                "Created a tested boundary that prevents malformed external transport data from leaking into the application.",
+                "Established clear separation between the React frontend, Node.js backend, domain models, and VBB integration.",
+                "Reduced future browser-to-VBB coupling by making the backend responsible for external transport-data access.",
+                "Maintained a reliable development baseline with passing tests, lint checks, and independent frontend and backend builds.",
+                "Prepared the backend for a GraphQL API and future map-based vehicle visualization.",
+            ],
+        },
+    },
+    {
         slug: "foam3d",
         title: "FOAM3D",
         year: 2024,
